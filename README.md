@@ -1,6 +1,10 @@
 # AtCoder やっていき atcoder-go-tool
 
-便利な自分用 Util(golang 用)
+便利な物をまとめた Atcoder コンテストツール(golang)
+
+-   よく使いそうなメソッドの定義
+-   Atcoder を模擬したテストコード確認ツール(main_atcoder_test.go)
+
 ABC にチャレンジしていくにつれ充実させていきたい
 
 ## main.go
@@ -11,6 +15,7 @@ ABC にチャレンジしていくにつれ充実させていきたい
 
 atcoder の提出を模擬したテストファイル
 WA や TLE、MLE を測れます
+`mle` `tle` `input` `expectOutput`を変更して実行
 
 # LICENSE
 
