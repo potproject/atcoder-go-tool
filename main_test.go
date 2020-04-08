@@ -27,6 +27,14 @@ func TestSliceInt(t *testing.T) {
 	}
 }
 
+func TestSliceIntSum(t *testing.T) {
+	e := 45
+	a := sliceIntSum([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0})
+	if a != e {
+		t.Errorf("invalid a:%v e:%v", a, e)
+	}
+}
+
 func TestReverse(t *testing.T) {
 	a := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
 	e := reverse([]int{0, 9, 8, 7, 6, 5, 4, 3, 2, 1})
@@ -37,6 +45,22 @@ func TestReverse(t *testing.T) {
 func TestGetDigit(t *testing.T) {
 	e := 10
 	a := getDigit(1234567890)
+	if a != e {
+		t.Errorf("invalid a:%v e:%v", a, e)
+	}
+}
+
+func TestGetSumDigit(t *testing.T) {
+	e := 45
+	a := getSumDigit(1234567890)
+	if a != e {
+		t.Errorf("invalid a:%v e:%v", a, e)
+	}
+}
+
+func TestLastPrime(t *testing.T) {
+	e := int64(97)
+	a := lastPrime(25)
 	if a != e {
 		t.Errorf("invalid a:%v e:%v", a, e)
 	}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func abs(a int) int {
 	return a
 }
 
-// sliceInt Intをスライスする
+// sliceInt []intをスライスする
 func sliceInt(k int) []int {
 	s := make([]int, getDigit(k))
 	count := 0
@@ -34,7 +35,16 @@ func sliceInt(k int) []int {
 	return s
 }
 
-// reverse int[]を反転
+// sliceIntSum []intの合計を出す
+func sliceIntSum(v []int) int {
+	sum := 0
+	for _, x := range v {
+		sum += x
+	}
+	return sum
+}
+
+// reverse []intを反転
 func reverse(s []int) []int {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
@@ -50,4 +60,49 @@ func getDigit(num int) int {
 		digit++
 	}
 	return digit
+}
+
+// getSumDigit intの各位の和を返す
+func getSumDigit(num int) int {
+	sum := 0
+	for num != 0 {
+		t := num % 10
+		num /= 10
+		sum += t
+	}
+	return sum
+}
+
+// lastPrime 素数 エラトステネスの篩
+func lastPrime(max int64) int64 {
+	if max <= 1 {
+		return 2
+	}
+	primes := make([]int64, 1, max)
+	primesF := make([]float64, 1, max)
+	primes[0] = 2
+	primesF[0] = 2.0
+
+	count := int64(1)
+	for n := int64(3); ; n += 2 {
+		flag := true
+		f := float64(n)
+		rf := math.Sqrt(f)
+		for i := 1; i < len(primes); i++ {
+			if primesF[i] > rf {
+				break
+			} else if (n % primes[i]) == 0 {
+				flag = false
+				break
+			}
+		}
+		if flag {
+			count++
+			if count >= max {
+				return n
+			}
+			primes = append(primes, n)
+			primesF = append(primesF, f)
+		}
+	}
 }
