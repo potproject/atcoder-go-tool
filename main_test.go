@@ -64,4 +64,9 @@ func TestLastPrime(t *testing.T) {
 	if a != e {
 		t.Errorf("invalid a:%v e:%v", a, e)
 	}
+	e2 := int64(2)
+	a2 := lastPrime(1)
+	if a2 != e2 {
+		t.Errorf("invalid a2:%v e2:%v", a2, e2)
+	}
 }
