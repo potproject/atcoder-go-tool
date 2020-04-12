@@ -113,7 +113,7 @@ func gcd(m, n int64) int64 {
 	x := new(big.Int)
 	y := new(big.Int)
 	z := new(big.Int)
-	a := new(big.Int).SetInt64(int64(m))
-	b := new(big.Int).SetInt64(int64(n))
+	a := new(big.Int).SetInt64(m)
+	b := new(big.Int).SetInt64(n)
 	return z.GCD(x, y, a, b).Int64()
 }
