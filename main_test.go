@@ -70,3 +70,11 @@ func TestLastPrime(t *testing.T) {
 		t.Errorf("invalid a2:%v e2:%v", a2, e2)
 	}
 }
+
+func TestGcd(t *testing.T) {
+	e := int64(4)
+	a := gcd(20, 32)
+	if a != e {
+		t.Errorf("invalid a:%v e:%v", a, e)
+	}
+}

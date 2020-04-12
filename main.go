@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/big"
 )
 
 func main() {
@@ -105,4 +106,14 @@ func lastPrime(max int64) int64 {
 			primesF = append(primesF, f)
 		}
 	}
+}
+
+// gcd 最大公約数
+func gcd(m, n int64) int64 {
+	x := new(big.Int)
+	y := new(big.Int)
+	z := new(big.Int)
+	a := new(big.Int).SetInt64(int64(m))
+	b := new(big.Int).SetInt64(int64(n))
+	return z.GCD(x, y, a, b).Int64()
 }

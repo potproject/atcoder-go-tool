@@ -70,3 +70,13 @@ func BenchmarkTestPrime100(b *testing.B) {
 		_ = lastPrime(base)
 	}
 }
+
+// 405 ns/op
+func BenchmarkTestGcd(b *testing.B) {
+	x := int64(240)
+	y := int64(320)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = gcd(x, y)
+	}
+}
