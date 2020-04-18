@@ -71,7 +71,7 @@ func BenchmarkTestPrime100(b *testing.B) {
 	}
 }
 
-// 405 ns/op
+// 11.0 ns/op
 func BenchmarkTestGcd(b *testing.B) {
 	x := int64(240)
 	y := int64(320)
