@@ -8,57 +8,64 @@ import (
 	"strconv"
 )
 
-var sc = bufio.NewScanner(os.Stdin)
-var out = bufio.NewWriter(os.Stdout)
-
 func main() {
-	buf := make([]byte, 1024*1024)
-	sc.Buffer(buf, bufio.MaxScanTokenSize)
-	sc.Split(bufio.ScanWords)
-	defer out.Flush()
-	a, b := nextInt(), nextInt()
-	i := nextInts(a)
-	fmt.Println(a, b)
-	fmt.Println(i)
-
+	io := io{
+		sc:  bufio.NewScanner(os.Stdin),
+		out: bufio.NewWriter(os.Stdout),
+	}
+	io.init()
+	a := io.nextInt()
+	i := io.nextInts(a)
+	fmt.Println(a, sliceIntSum(i))
 }
 
 //-------------------------------------------
 // I/O util tools
 
-func next() string {
-	sc.Scan()
-	return sc.Text()
+type io struct {
+	sc  *bufio.Scanner
+	out *bufio.Writer
 }
 
-func nextInt() int {
-	a, _ := strconv.Atoi(next())
+func (io io) init() {
+	buf := make([]byte, 1024*1024)
+	io.sc.Buffer(buf, bufio.MaxScanTokenSize)
+	io.sc.Split(bufio.ScanWords)
+}
+
+func (io io) next() string {
+	io.sc.Scan()
+	return io.sc.Text()
+}
+
+func (io io) nextInt() int {
+	a, _ := strconv.Atoi(io.next())
 	return a
 }
 
-func nextFloat64() float64 {
-	a, _ := strconv.ParseFloat(next(), 64)
+func (io io) nextFloat64() float64 {
+	a, _ := strconv.ParseFloat(io.next(), 64)
 	return a
 }
 
-func nextInts(n int) []int {
+func (io io) nextInts(n int) []int {
 	ret := make([]int, n)
 	for i := 0; i < n; i++ {
-		ret[i] = nextInt()
+		ret[i] = io.nextInt()
 	}
 	return ret
 }
-func nextFloats(n int) []float64 {
+func (io io) nextFloats(n int) []float64 {
 	ret := make([]float64, n)
 	for i := 0; i < n; i++ {
-		ret[i] = nextFloat64()
+		ret[i] = io.nextFloat64()
 	}
 	return ret
 }
-func nextStrings(n int) []string {
+func (io io) nextStrings(n int) []string {
 	ret := make([]string, n)
 	for i := 0; i < n; i++ {
-		ret[i] = next()
+		ret[i] = io.next()
 	}
 	return ret
 }

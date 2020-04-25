@@ -17,10 +17,10 @@ const tle = 2 * time.Second
 
 // I/O
 // input 入力
-const input = "100 200 300"
+const input = "4\r\n10 20 30 40"
 
 // expectOutput 期待される出力
-const expectOutput = "300 200 100"
+const expectOutput = "4 100"
 
 func TestMain(t *testing.T) {
 	tleFlag := false
