@@ -17,6 +17,10 @@ atcoder の提出を模擬したテストファイル
 WA や TLE、MLE を測れます
 `mle` `tle` `input` `expectOutput`を変更して実行
 
+## main_benchmark_test.go
+
+参考用ベンチマーク
+
 # LICENSE
 
 MIT
