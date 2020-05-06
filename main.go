@@ -9,11 +9,7 @@ import (
 )
 
 func main() {
-	io := io{
-		sc:  bufio.NewScanner(os.Stdin),
-		out: bufio.NewWriter(os.Stdout),
-	}
-	io.init()
+	io := ioinit()
 	a := io.nextInt()
 	i := io.nextInts(a)
 	fmt.Println(a, sliceIntSum(i))
@@ -27,7 +23,18 @@ type io struct {
 	out *bufio.Writer
 }
 
+func ioinit() io {
+	io := io{
+		sc:  bufio.NewScanner(os.Stdin),
+		out: bufio.NewWriter(os.Stdout),
+	}
+	io.init()
+	return io
+}
+
 func (io io) init() {
+	io.sc = bufio.NewScanner(os.Stdin)
+	io.out = bufio.NewWriter(os.Stdout)
 	buf := make([]byte, 1024*1024)
 	io.sc.Buffer(buf, bufio.MaxScanTokenSize)
 	io.sc.Split(bufio.ScanWords)
